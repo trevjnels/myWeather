@@ -1,0 +1,228 @@
+* {
+  margin: 0;
+  padding: 0;
+  color: black;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.grid {
+  height: 100vh;
+  display: grid;
+}
+
+.grid div {
+  border: 1px solid black;
+  display: flex;
+}
+
+.title {
+  grid-area: title;
+  background-color: pink;
+}
+
+.input {
+  grid-area: input;
+  background-color: lightblue;
+}
+
+.output-right {
+  grid-area: output-right;
+  background-color: lightgreen;
+}
+
+.output-left {
+  grid-area: output-left;
+  background-color: orange;
+}
+
+.footer {
+  grid-area: footer;
+  background-color: lightyellow;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.github-button {
+  margin-left: .5vw;
+}
+
+@media screen and (max-width: 480px) {
+  .grid {
+    grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 0.5fr;
+    grid-template-rows: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 0.5fr;
+    grid-template-areas:
+      " title title title title title title title title title "
+      "input input input input input input input input input "
+      "  input input input input input input input input input "
+      " output-left output-left output-left output-left output-left output-left   output-left  output-left  output-left "
+      "  output-left output-left output-left output-left output-left output-left   output-left  output-left  output-left "
+      "output-right  output-right output-right output-right output-right  output-right output-right output-right output-right"
+      "output-right  output-right output-right output-right output-right  output-right output-right output-right output-right"
+      "output-right  output-right output-right output-right output-right  output-right output-right output-right output-right"
+      "  footer footer footer footer footer footer footer footer footer";
+  }
+
+  .title {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .input {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .output-right {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .output-left {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .footer {
+    /*  */
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .grid {
+    grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 0.5fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      " title title title title title title title title title "
+      "input input input input input input input input input "
+      "  input input input input input input input input input "
+      " output-left output-left output-left output-left output-left output-left   output-left  output-left  output-left "
+      "  output-left output-left output-left output-left output-left output-left   output-left  output-left  output-left "
+      "output-right  output-right output-right output-right output-right  output-right output-right output-right output-right"
+      "output-right  output-right output-right output-right output-right  output-right output-right output-right output-right"
+      "output-right  output-right output-right output-right output-right  output-right output-right output-right output-right"
+      "  footer footer footer footer footer footer footer footer footer";
+  }
+
+  .title {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .input {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .output-right {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .output-left {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .footer {
+    /*  */
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 979px) {
+  .grid {
+    grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 0.5fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      ". title title title title title title title ."
+      ". input input input input input input input ."
+      ".  input input input input input input input ."
+      ".  output-left output-left output-left output-right  output-right output-right output-right ."
+      ".  output-left output-left output-left output-right  output-right output-right output-right ."
+      ".  output-left output-left output-left output-right  output-right output-right output-right ."
+      ".  output-left output-left output-left output-right  output-right output-right output-right ."
+      ".  output-left output-left output-left output-right  output-right output-right output-right ."
+      " . footer footer footer footer footer footer footer .";
+  }
+
+  .title {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .input {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .output-right {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .output-left {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .footer {
+    /*  */
+  }
+}
+
+@media screen and (min-width: 979px) {
+  .grid {
+    grid-template-columns: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 0.5fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas:
+      ". title title title title title title title ."
+      ". input input input input input input input ."
+      ".  input input input input input input input ."
+      ".  output-left output-left output-left output-right  output-right output-right output-right ."
+      ".  output-left output-left output-left output-right  output-right output-right output-right ."
+      ".  output-left output-left output-left output-right  output-right output-right output-right ."
+      ".  output-left output-left output-left output-right  output-right output-right output-right ."
+      ".  output-left output-left output-left output-right  output-right output-right output-right ."
+      " . footer footer footer footer footer footer footer .";
+  }
+
+  .title {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .input {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .output-right {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .output-left {
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .footer {
+    /*  */
+  }
+}
