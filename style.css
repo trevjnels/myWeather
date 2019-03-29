@@ -5,6 +5,12 @@
   font-family: 'Quicksand', sans-serif;
 }
 
+.flex {
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-around;
+}
+
 .grid {
   height: 100vh;
   display: grid;
@@ -53,10 +59,10 @@
     grid-template-rows: 0.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 0.5fr;
     grid-template-areas:
       " title title title title title title title title title "
-      "input input input input input input input input input "
-      "  input input input input input input input input input "
+      "output-left output-left output-left output-left output-left output-left   output-left  output-left  output-left  "
+      "  output-left output-left output-left output-left output-left output-left   output-left  output-left  output-left  "
       " output-left output-left output-left output-left output-left output-left   output-left  output-left  output-left "
-      "  output-left output-left output-left output-left output-left output-left   output-left  output-left  output-left "
+      "  output-right  output-right output-right output-right output-right  output-right output-right output-right output-right "
       "output-right  output-right output-right output-right output-right  output-right output-right output-right output-right"
       "output-right  output-right output-right output-right output-right  output-right output-right output-right output-right"
       "output-right  output-right output-right output-right output-right  output-right output-right output-right output-right"
@@ -98,10 +104,10 @@
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-areas:
       " title title title title title title title title title "
-      "input input input input input input input input input "
-      "  input input input input input input input input input "
+      "output-left output-left output-left output-left output-left output-left   output-left  output-left  output-left  "
+      "  output-left output-left output-left output-left output-left output-left   output-left  output-left  output-left  "
       " output-left output-left output-left output-left output-left output-left   output-left  output-left  output-left "
-      "  output-left output-left output-left output-left output-left output-left   output-left  output-left  output-left "
+      " output-right  output-right output-right output-right output-right  output-right output-right output-right output-right"
       "output-right  output-right output-right output-right output-right  output-right output-right output-right output-right"
       "output-right  output-right output-right output-right output-right  output-right output-right output-right output-right"
       "output-right  output-right output-right output-right output-right  output-right output-right output-right output-right"
@@ -143,8 +149,8 @@
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-areas:
       ". title title title title title title title ."
-      ". input input input input input input input ."
-      ".  input input input input input input input ."
+      ".  output-left output-left output-left output-right  output-right output-right output-right ."
+      ".  output-left output-left output-left output-right  output-right output-right output-right ."
       ".  output-left output-left output-left output-right  output-right output-right output-right ."
       ".  output-left output-left output-left output-right  output-right output-right output-right ."
       ".  output-left output-left output-left output-right  output-right output-right output-right ."
@@ -188,8 +194,8 @@
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     grid-template-areas:
       ". title title title title title title title ."
-      ". input input input input input input input ."
-      ".  input input input input input input input ."
+      ".  output-left output-left output-left output-right  output-right output-right output-right ."
+      ".  output-left output-left output-left output-right  output-right output-right output-right ."
       ".  output-left output-left output-left output-right  output-right output-right output-right ."
       ".  output-left output-left output-left output-right  output-right output-right output-right ."
       ".  output-left output-left output-left output-right  output-right output-right output-right ."
