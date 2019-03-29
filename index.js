@@ -11,7 +11,7 @@ const copyrightListner = function() {
     window.open("https://trevjnels.github.io/portfolio/", "_blank");
   });
 };
-const ipKey = "316961512d48d2f24ad46bfd87a7bc6f";
+const ipKey = "b51463ddf7aa16352e4b06e04d01275f68bedeb5d2dc8908fa99844f";
 const weatherKey = "eb0f6c8bad479b1a1f57b441165e3edc";
 const kelvin2F = function(k) {
   var f = k * (9 / 5) - 459.67;
@@ -47,6 +47,7 @@ const renderCity = function(city) {
 };
 
 const render = function(ipLocation) {
+  console.log(ipLocation);
   renderCity(ipLocation.city);
 
   var lat = ipLocation.latitude;
@@ -55,11 +56,11 @@ const render = function(ipLocation) {
   getFutureWeather(lat, long);
 };
 
-const getIPAddress = function() {
-  fetch(`http://api.ipstack.com/check?access_key=${ipKey}`)
-    .then(response => response.json())
-    .then(responseJSON => render(responseJSON));
-  // .then(responseJSON => console.log(responseJSON));
+const getIPAddressLocation = function() {
+  console.log("ip");
+  fetch(`https://api.ipdata.co/?api-key=${ipKey}`)
+    .then(results => results.json())
+    .then(resultsJ => render(resultsJ));
 };
 
 const getCurrentWeather = function(lat, long) {
@@ -81,7 +82,7 @@ const getFutureWeather = function(lat, long) {
 const autoRunner = function() {
   logger(autoRunner);
   copyrightListner();
-  getIPAddress();
+  getIPAddressLocation();
 };
 
 autoRunner();
