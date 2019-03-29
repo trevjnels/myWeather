@@ -9,6 +9,13 @@ const copyrightListner = function() {
     window.open("https://trevjnels.github.io/portfolio/", "_blank");
   });
 };
+
+const refreshListner = function() {
+  $(".refresh").on("click", function(e) {
+    e.preventDefault();
+    window.location.reload();
+  });
+};
 const ipKey = "b51463ddf7aa16352e4b06e04d01275f68bedeb5d2dc8908fa99844f";
 const weatherKey = "eb0f6c8bad479b1a1f57b441165e3edc";
 const kelvin2F = function(k) {
@@ -40,9 +47,9 @@ const renderCurrentWeather = function(resp) {
   $(".output-left").html(`<div class="flex current-weather">
     <H1>Today's Weather:</H1>
       <H3>${clouds}</h3>
-      <p>Current Temp: <span class="shadow">${temp}</span></p>
-      <p>High: <span class="shadow">${maxTemp}</span></p>
-      <p>Low: <span class="shadow"> ${minTemp}</span> </p>
+      <p>Current Temp: <span class="shadow">${temp}</span> <span class="sub">f</span></p>
+      <p>High: <span class="shadow">${maxTemp}</span> <span class="sub">f</span></p>
+      <p>Low: <span class="shadow"> ${minTemp}</span> <span class="sub">f</span> </p>
   </div>`);
 };
 
@@ -104,8 +111,8 @@ const renderFutureWeather = function(resp) {
       <H4><span class="shadow">${dayOfWeek}'s Weather:</span></H4>
         <H5>${weatherType}</h5>
 
-      <p>High: <span class="shadow">${maxTemp}</span></p>
-      <p>Low: <span class="shadow"> ${minTemp}</span> </p>
+      <p>High: <span class="shadow">${maxTemp}</span> <span class="sub">f</span></p>
+      <p>Low: <span class="shadow"> ${minTemp}</span> <span class="sub">f</span> </p>
     </div>
     <div class="icon"><img src=${icon}></div>
   </div>`);
@@ -116,7 +123,7 @@ const renderFutureWeather = function(resp) {
   // 5 13 23 33 43
 };
 const renderCity = function(city) {
-  $(".title").html(`Weather in ${city}:`);
+  $(".title").html(`Weather in <span class="city shadow"> ${city}:</span>`);
 };
 
 const render = function(ipLocation) {
@@ -154,6 +161,7 @@ const autoRunner = function() {
   logger(autoRunner);
   copyrightListner();
   getIPAddressLocation();
+  refreshListner();
 };
 
 autoRunner();

@@ -5,11 +5,35 @@
   font-family: "Quicksand", sans-serif;
 }
 
+.title {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.city {
+  padding-left: .5vw;
+}
+
 .flex {
   display: flex;
   flex-direction: column;
   align-items: start;
   justify-content: space-around;
+}
+
+body {
+  height: 100vh;
+}
+
+.sub {
+  font-size: 75%;
+}
+
+.refresh {
+  background-color: black;
+  color: white;
+  border-radius: 2px;
 }
 
 .row {
@@ -31,7 +55,7 @@ img {
 }
 
 .grid {
-  height: 100vh;
+  height: 100%;
   display: grid;
 }
 
@@ -42,7 +66,7 @@ img {
 }
 
 .future-weather {
-  min-width: 155px;
+  min-width: 175px;
   max-width: 25vw;
 }
 
@@ -98,12 +122,6 @@ img {
       "  footer footer footer footer footer footer footer footer footer";
   }
 
-  .title {
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-  }
-
   .input {
     flex-direction: column;
     justify-content: space-around;
@@ -141,12 +159,6 @@ img {
       "output-right  output-right output-right output-right output-right  output-right output-right output-right output-right"
       "output-right  output-right output-right output-right output-right  output-right output-right output-right output-right"
       "  footer footer footer footer footer footer footer footer footer";
-  }
-
-  .title {
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
   }
 
   .input {
@@ -188,12 +200,6 @@ img {
       " . footer footer footer footer footer footer footer .";
   }
 
-  .title {
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-  }
-
   .input {
     flex-direction: column;
     justify-content: space-around;
@@ -231,12 +237,6 @@ img {
       ".  output-left output-left output-left output-right  output-right output-right output-right ."
       ".  output-left output-left output-left output-right  output-right output-right output-right ."
       " . footer footer footer footer footer footer footer .";
-  }
-
-  .title {
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
   }
 
   .input {
