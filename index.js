@@ -1,13 +1,11 @@
 "use strict";
-const logger = function(func) {
-  console.log(func.name, " is running!");
-};
+const logger = function(func) {};
 
 const copyrightListner = function() {
   logger(copyrightListner);
   $(".github-button").on("click", function(e) {
     e.preventDefault();
-    console.log("click");
+
     window.open("https://trevjnels.github.io/portfolio/", "_blank");
   });
 };
@@ -38,27 +36,90 @@ const renderCurrentWeather = function(resp) {
   } else {
     clouds = "clear";
   }
-  var weather = [];
-  resp.weather.forEach(function(elem) {
-    weather.push(elem);
-  });
 
-  console.log(weather);
   $(".output-left").html(`<div class="flex current-weather">
     <H1>Today's Weather:</H1>
       <H3>${clouds}</h3>
-    <p>Current Temp: ${temp}</p>
-    <p>High: ${maxTemp}</p>
-    <p>Low: Temp: ${minTemp}</p>
+      <p>Current Temp: <span class="shadow">${temp}</span></p>
+      <p>High: <span class="shadow">${maxTemp}</span></p>
+      <p>Low: <span class="shadow"> ${minTemp}</span> </p>
   </div>`);
 };
-const renderFutureWeather = function() {};
+
+const dayMaker = function(unix) {
+  var daysOfTheWeek = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
+  var date = new Date(unix * 1000);
+  return daysOfTheWeek[date.getDay()];
+};
+const renderFutureWeather = function(resp) {
+  $(".output-right").html("");
+  var weatherArr = [];
+  // console.log(resp.list);
+  weatherArr.push(resp.list[3]);
+  weatherArr.push(resp.list[10]);
+  weatherArr.push(resp.list[19]);
+  weatherArr.push(resp.list[30]);
+  console.log(weatherArr);
+
+  for (let i = 0; i < weatherArr.length; i++) {
+    var day = weatherArr[i];
+
+    var dayWeather = day.weather[0];
+    var weatherType = dayWeather.main;
+    var icon = `http://openweathermap.org/img/w/${dayWeather.icon}.png`;
+    var dayOfWeek = dayMaker(day.dt);
+    var temp = kelvin2F(day.main.temp)
+      .toString()
+      .slice(0, 4);
+    var maxTemp = kelvin2F(day.main.temp_max)
+      .toString()
+      .slice(0, 4);
+    var minTemp = kelvin2F(day.main.temp_min)
+      .toString()
+      .slice(0, 4);
+    var clouds = day.clouds.all;
+    if (clouds > 0.75) {
+      clouds = "Overcast";
+    } else if (clouds > 0.5 && clouds <= 75) {
+      clouds = "Cloudy";
+    } else if (clouds > 0.25 && clouds <= 50) {
+      clouds = "Partly cloudy";
+    } else {
+      clouds = "Clear";
+    }
+    console.log(dayOfWeek);
+
+    $(".output-right").append(`
+      <div class="row">
+
+      <div class="flex future-weather ">
+      <H4><span class="shadow">${dayOfWeek}'s Weather:</span></H4>
+        <H5>${weatherType}</h5>
+
+      <p>High: <span class="shadow">${maxTemp}</span></p>
+      <p>Low: <span class="shadow"> ${minTemp}</span> </p>
+    </div>
+    <div class="icon"><img src=${icon}></div>
+  </div>`);
+  }
+
+  // var tomorrow = dateMaker(resp.list[6].dt);
+
+  // 5 13 23 33 43
+};
 const renderCity = function(city) {
   $(".title").html(`Weather in ${city}:`);
 };
 
 const render = function(ipLocation) {
-  console.log(ipLocation);
   renderCity(ipLocation.city);
 
   var lat = ipLocation.latitude;
@@ -68,7 +129,6 @@ const render = function(ipLocation) {
 };
 
 const getIPAddressLocation = function() {
-  console.log("ip");
   fetch(`https://api.ipdata.co/?api-key=${ipKey}`)
     .then(results => results.json())
     .then(resultsJ => render(resultsJ));
@@ -87,7 +147,7 @@ const getFutureWeather = function(lat, long) {
     `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${long}&APPID=${weatherKey}`
   )
     .then(response => response.json())
-    .then(responseJSON => responseJSON);
+    .then(responseJSON => renderFutureWeather(responseJSON));
 };
 
 const autoRunner = function() {
