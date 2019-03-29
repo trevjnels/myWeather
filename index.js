@@ -29,13 +29,24 @@ const renderCurrentWeather = function(resp) {
     .toString()
     .slice(0, 4);
   var clouds = resp.clouds.all;
+  if (clouds > 0.75) {
+    clouds = "overcast";
+  } else if (clouds > 0.5 && clouds <= 75) {
+    clouds = "cloudy";
+  } else if (clouds > 0.25 && clouds <= 50) {
+    clouds = "partly cloudy";
+  } else {
+    clouds = "clear";
+  }
   var weather = [];
   resp.weather.forEach(function(elem) {
     weather.push(elem);
   });
 
+  console.log(weather);
   $(".output-left").html(`<div class="flex current-weather">
     <H1>Today's Weather:</H1>
+      <H3>${clouds}</h3>
     <p>Current Temp: ${temp}</p>
     <p>High: ${maxTemp}</p>
     <p>Low: Temp: ${minTemp}</p>
