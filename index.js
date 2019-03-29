@@ -10,12 +10,12 @@ const copyrightListner = function() {
   });
 };
 
-const refreshListner = function() {
-  $(".refresh").on("click", function(e) {
-    e.preventDefault();
-    window.location.reload();
-  });
-};
+// const refreshListner = function() {
+//   $(".refresh").on("click", function(e) {
+//     e.preventDefault();
+//     window.location.reload();
+//   });
+// };
 const ipKey = "b51463ddf7aa16352e4b06e04d01275f68bedeb5d2dc8908fa99844f";
 const weatherKey = "eb0f6c8bad479b1a1f57b441165e3edc";
 const kelvin2F = function(k) {
@@ -68,12 +68,24 @@ const dayMaker = function(unix) {
 };
 const renderFutureWeather = function(resp) {
   $(".output-right").html("");
+  console.log(resp);
   var weatherArr = [];
   // console.log(resp.list);
   weatherArr.push(resp.list[3]);
   weatherArr.push(resp.list[10]);
   weatherArr.push(resp.list[19]);
   weatherArr.push(resp.list[30]);
+
+  weatherArr[0].main.temp_min = resp.list[0].main.temp_min;
+  weatherArr[0].main.temp_max = resp.list[5].main.temp_max;
+  weatherArr[1].main.temp_min = resp.list[7].main.temp_min;
+  weatherArr[1].main.temp_max = resp.list[9].main.temp_max;
+  weatherArr[2].main.temp_min = resp.list[17].main.temp_min;
+  weatherArr[2].main.temp_max = resp.list[21].main.temp_max;
+  weatherArr[3].main.temp_min = resp.list[25].main.temp_min;
+  weatherArr[3].main.temp_max = resp.list[29].main.temp_max;
+
+  console.log("mintemp is", weatherArr[0].minTemp);
   console.log(weatherArr);
 
   for (let i = 0; i < weatherArr.length; i++) {
@@ -86,12 +98,22 @@ const renderFutureWeather = function(resp) {
     var temp = kelvin2F(day.main.temp)
       .toString()
       .slice(0, 4);
-    var maxTemp = kelvin2F(day.main.temp_max)
-      .toString()
-      .slice(0, 4);
-    var minTemp = kelvin2F(day.main.temp_min)
-      .toString()
-      .slice(0, 4);
+    console.log(i);
+    if (day.main.temp_max < day.main.temp_min) {
+      var minTemp = kelvin2F(day.main.temp_max)
+        .toString()
+        .slice(0, 4);
+      var maxTemp = kelvin2F(day.main.temp_min)
+        .toString()
+        .slice(0, 4);
+    } else {
+      var maxTemp = kelvin2F(day.main.temp_max)
+        .toString()
+        .slice(0, 4);
+      var minTemp = kelvin2F(day.main.temp_min)
+        .toString()
+        .slice(0, 4);
+    }
     var clouds = day.clouds.all;
     if (clouds > 0.75) {
       clouds = "Overcast";
@@ -161,7 +183,7 @@ const autoRunner = function() {
   logger(autoRunner);
   copyrightListner();
   getIPAddressLocation();
-  refreshListner();
+  // refreshListner();
 };
 
 autoRunner();
