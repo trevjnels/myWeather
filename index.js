@@ -93,7 +93,7 @@ const renderFutureWeather = function(resp) {
 
     var dayWeather = day.weather[0];
     var weatherType = dayWeather.main;
-    var icon = `http://openweathermap.org/img/w/${dayWeather.icon}.png`;
+    var icon = `https://openweathermap.org/img/w/${dayWeather.icon}.png`;
     var dayOfWeek = dayMaker(day.dt);
     var temp = kelvin2F(day.main.temp)
       .toString()
